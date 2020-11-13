@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from './product';
-import { ProductService } from "./product.service";
+import { ProductService } from './product.service';
 
 @Component({
   selector: 'pm-products',
@@ -17,6 +17,7 @@ export class ProductListComponent implements OnInit {
   products: IProduct[] = [];
 
   errorMessage: string;
+
   _listFilter: string;
 
   get listFilter(): string {
@@ -26,16 +27,13 @@ export class ProductListComponent implements OnInit {
   set listFilter(value: string) {
     this._listFilter = value;
     this.filteredProducts = this.listFilter
-    ? this.performFilter(this.listFilter)
-    : this.products;
+      ? this.performFilter(this.listFilter)
+      : this.products;
   }
 
-  constructor(private productService: ProductService) {
-  }
+  constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
-    this.products = this.productService.getProducts();
-    this.filteredProducts = this.products;
     this.productService.getProducts().subscribe({
       next: (products) => {
         this.products = products;
@@ -53,12 +51,11 @@ export class ProductListComponent implements OnInit {
     filterBy = filterBy.toLocaleLowerCase();
     return this.products.filter(
       (product: IProduct) =>
-      product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1
-      );
-    }
+        product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1
+    );
+  }
 
-    onRatingClicked(message: string): void {
-      this.pageTitle = 'Product List: ' + message;
-    }
-
+  onRatingClicked(message: string): void {
+    this.pageTitle = 'Product List: ' + message;
+  }
 }
