@@ -49,9 +49,15 @@ export class ProductListComponent implements OnInit {
 
   performFilter(filterBy: string): IProduct[] {
     filterBy = filterBy.toLocaleLowerCase();
+
+    function filterOn(productAtribute: string): boolean {
+      return productAtribute.toLocaleLowerCase().indexOf(filterBy) !== -1;
+    }
+
     return this.products.filter(
       (product: IProduct) =>
-        product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1
+        filterOn(product.productName) ||
+        filterOn(product.productCode.replace('-', ' '))
     );
   }
 
