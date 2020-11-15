@@ -28,3 +28,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Application Architecture
 ![application architecture](https://user-images.githubusercontent.com/9321996/99160762-38504a00-26c9-11eb-8b83-0faab5ef1cd9.PNG)
+
+![Screenshot (36)](https://user-images.githubusercontent.com/9321996/99191156-8efd6880-2749-11eb-9f28-aba3ff5513c9.png)
